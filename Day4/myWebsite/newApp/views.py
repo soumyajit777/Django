@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from .models import Product
 
 def app(request):
-    products = Product.objects.all()
+    products = Product.objects.all()        
     return render(request, 'newApp/app.html', {'products': products})
 
 def about(request):
