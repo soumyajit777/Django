@@ -7,6 +7,17 @@
     <div class="products-header">
         <h1>Our Products</h1>
         <p>Discover our amazing collection of products</p>
+        
+        <!-- Search Bar -->
+        <form method="get" action="{% url 'newApp:search' %}" class="search-form">
+            <div class="search-bar-wrapper">
+                <input type="text" name="q" placeholder="Search products by name or description..." value="{{ search_query }}" class="search-input">
+                <button type="submit" class="search-btn">Search</button>
+            </div>
+        </form>
+        {% if search_query %}
+            <p class="search-info">Search results for: <strong>{{ search_query }}</strong></p>
+        {% endif %}
     </div>
 
     {% if products %}
@@ -56,14 +67,14 @@
 }
 
 .products-header h1 {
-    color: #333;
-    font-size: 2.5rem;
+    color: #f8fafc;
+    font-size: 2.8rem;
     margin-bottom: 10px;
     font-weight: 700;
 }
 
 .products-header p {
-    color: #666;
+    color: #cbd5e1;
     font-size: 1.1rem;
 }
 
@@ -75,23 +86,24 @@
 }
 
 .product-card {
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background: rgba(15, 23, 42, 0.96);
+    border-radius: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.18);
     overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease, border-color 0.3s ease;
 }
 
 .product-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    transform: translateY(-6px);
+    border-color: rgba(251, 191, 36, 0.35);
 }
 
 .product-image {
     width: 100%;
-    height: 200px;
+    height: 220px;
     overflow: hidden;
-    background: #f8f9fa;
+    background: #0f172a;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -104,113 +116,121 @@
 }
 
 .no-image {
-    color: #999;
+    color: #94a3b8;
     font-size: 1.2rem;
     text-align: center;
 }
 
 .product-info {
-    padding: 20px;
+    padding: 24px;
 }
 
 .product-name {
-    font-size: 1.3rem;
-    font-weight: 600;
-    color: #333;
-    margin-bottom: 10px;
-    line-height: 1.4;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #f8fafc;
+    margin-bottom: 12px;
+    line-height: 1.3;
 }
 
 .product-description {
-    color: #666;
-    font-size: 0.95rem;
-    line-height: 1.5;
-    margin-bottom: 15px;
+    color: #cbd5e1;
+    font-size: 0.96rem;
+    line-height: 1.75;
+    margin-bottom: 18px;
 }
 
 .product-footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 15px;
+    margin-bottom: 18px;
+    gap: 12px;
+    flex-wrap: wrap;
 }
 
 .product-price {
-    font-size: 1.4rem;
+    font-size: 1.35rem;
     font-weight: 700;
-    color: #2c3e50;
+    color: #fbbf24;
 }
 
 .product-status {
-    padding: 4px 12px;
-    border-radius: 20px;
+    padding: 6px 14px;
+    border-radius: 999px;
     font-size: 0.8rem;
-    font-weight: 600;
+    font-weight: 700;
     text-transform: uppercase;
+    letter-spacing: 0.04em;
 }
 
 .status-available {
-    background: #d4edda;
-    color: #155724;
+    background: #163f1f;
+    color: #a3e635;
 }
 
 .status-unavailable {
-    background: #f8d7da;
-    color: #721c24;
+    background: #4b1d1d;
+    color: #fecaca;
 }
 
 .status-out_of_stock {
-    background: #fff3cd;
-    color: #856404;
+    background: #47371a;
+    color: #fbbf24;
 }
 
 .status-discontinued {
-    background: #e2e3e5;
-    color: #383d41;
+    background: #31343c;
+    color: #cbd5e1;
 }
 
 .product-actions {
     display: flex;
-    gap: 10px;
+    gap: 12px;
+    flex-wrap: wrap;
 }
 
 .btn {
     flex: 1;
-    padding: 10px 16px;
-    border: none;
-    border-radius: 6px;
-    font-size: 0.9rem;
-    font-weight: 600;
+    padding: 12px 18px;
+    border-radius: 999px;
+    font-size: 0.95rem;
+    font-weight: 700;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
     text-decoration: none;
     text-align: center;
+    border: none;
 }
 
 .btn-primary {
-    background: #007bff;
-    color: white;
+    background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);
+    color: #0f172a;
 }
 
 .btn-primary:hover {
-    background: #0056b3;
-    transform: translateY(-1px);
+    transform: translateY(-2px);
+    box-shadow: 0 14px 28px rgba(251, 191, 36, 0.2);
 }
 
 .btn-secondary {
-    background: #6c757d;
-    color: white;
+    background: rgba(255, 255, 255, 0.08);
+    color: #e2e8f0;
+    border: 1px solid rgba(226, 232, 240, 0.12);
 }
 
 .btn-secondary:hover {
-    background: #545b62;
-    transform: translateY(-1px);
+    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.12);
 }
 
 .no-products {
     text-align: center;
     padding: 60px 20px;
-    color: #666;
+    color: #cbd5e1;
+    background: rgba(15, 23, 42, 0.92);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 22px;
 }
 
 .no-products h2 {
@@ -241,6 +261,78 @@
     
     .products-grid {
         grid-template-columns: 1fr;
+    }
+}
+
+/* Search Bar Styles */
+.search-form {
+    margin-top: 25px;
+    margin-bottom: 20px;
+}
+
+.search-bar-wrapper {
+    display: flex;
+    gap: 10px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.search-input {
+    flex: 1;
+    padding: 14px 20px;
+    border-radius: 12px;
+    border: 2px solid rgba(251, 191, 36, 0.3);
+    background: rgba(15, 23, 42, 0.8);
+    color: #f8fafc;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: #fbbf24;
+    box-shadow: 0 0 20px rgba(251, 191, 36, 0.2);
+}
+
+.search-input::placeholder {
+    color: #94a3b8;
+}
+
+.search-btn {
+    padding: 14px 28px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);
+    color: #0f172a;
+    border: none;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    font-size: 1rem;
+}
+
+.search-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(251, 191, 36, 0.3);
+}
+
+.search-btn:active {
+    transform: translateY(0);
+}
+
+.search-info {
+    color: #fbbf24;
+    font-size: 1rem;
+    margin-top: 15px;
+    font-weight: 500;
+}
+
+@media (max-width: 600px) {
+    .search-bar-wrapper {
+        flex-direction: column;
+    }
+    
+    .search-btn {
+        width: 100%;
     }
 }
 </style>

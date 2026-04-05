@@ -3,6 +3,12 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-    <h1>Welcome to Django Website</h1>
-    <p>This is a simple Django website.</p>
+<section class="hero">
+    <h1>Welcome to MRK Fitness</h1>
+    <p>Discover premium fitness gear, workout essentials, and a fresh brand experience built for your training goals.</p>
+    <div class="hero-actions">
+        <a class="btn btn-primary" href="{% url 'newApp:home' %}">Shop Products</a>
+        <a class="btn btn-secondary" href="{% url 'newApp:about' %}">Learn More</a>
+    </div>
+</section>
 {% endblock %}
